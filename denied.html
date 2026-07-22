@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Access Denied</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <h2>Authentication System</h2>
+
+        <button class="logout-btn"
+                onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+
+    <div class="denied-box">
+
+        <h2>Access Denied</h2>
+
+        <p>
+
+            You do not have permission to access this page.
+
+        </p>
+
+        <button
+            style="width:200px"
+            onclick="window.location.href='dashboard.html'">
+
+            Back to Dashboard
+
+        </button>
+
+    </div>
+
+
+    <script src="js/users.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script>
+
+        requireLogin();
+
+    </script>
+
+</body>
+
+</html>

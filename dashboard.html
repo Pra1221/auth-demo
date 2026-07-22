@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <div class="navbar">
+
+        <h2>Authentication System</h2>
+
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="page-container">
+
+        <div class="welcome-box">
+
+            <h2 id="welcomeMessage"></h2>
+
+            <p>
+                <strong>Role :</strong>
+                <span id="role"></span>
+            </p>
+
+            <p>
+                <strong>Authorization :</strong>
+                <span id="authorization"></span>
+            </p>
+
+        </div>
+
+
+        <h2 style="margin-bottom:20px;">
+            Available Modules
+        </h2>
+
+
+        <div class="card-container">
+
+            <!-- User Panel -->
+
+            <div class="card">
+
+                <h3>User Panel</h3>
+
+                <p>
+                    View your profile and permissions.
+                </p>
+
+                <button id="userPanelBtn">
+                    Open
+                </button>
+
+            </div>
+
+
+            <!-- Admin Panel -->
+
+            <div class="card">
+
+                <h3>Admin Panel</h3>
+
+                <p>
+                    Manage users and administration.
+                </p>
+
+                <button id="adminPanelBtn">
+                    Open
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/users.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+
+        requireLogin();
+
+        loadDashboard();
+
+        document
+            .getElementById("userPanelBtn")
+            .addEventListener("click", function () {
+
+                window.location.href = "user.html";
+
+            });
+
+
+        document
+            .getElementById("adminPanelBtn")
+            .addEventListener("click", function () {
+
+                window.location.href = "admin.html";
+
+            });
+
+    </script>
+
+</body>
+
+</html>

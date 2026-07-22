@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>User Panel</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <h2>User Panel</h2>
+
+        <button class="logout-btn"
+                onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <div class="page-container">
+
+        <div class="welcome-box">
+
+            <h2 id="userName"></h2>
+
+            <p>
+
+                <strong>Role :</strong>
+
+                <span id="userRole"></span>
+
+            </p>
+
+            <p>
+
+                <strong>Authorization :</strong>
+
+                <span id="userAuthorization"></span>
+
+            </p>
+
+        </div>
+
+
+        <h2 style="margin-bottom:20px;">
+            Permissions
+        </h2>
+
+
+        <table class="permission-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Permission</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="permissionBody">
+
+            </tbody>
+
+        </table>
+
+
+        <br>
+
+        <button
+            style="width:180px"
+            onclick="window.location.href='dashboard.html'">
+
+            Back to Dashboard
+
+        </button>
+
+    </div>
+
+
+    <script src="js/users.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script>
+
+        requireLogin();
+
+        const user = getCurrentUser();
+
+        document.getElementById("userName").textContent = user.name;
+
+        document.getElementById("userRole").textContent = user.role;
+
+        document.getElementById("userAuthorization").textContent =
+            user.authorization;
+
+
+        const tableBody =
+            document.getElementById("permissionBody");
+
+
+        Object.entries(user.permissions).forEach(function(permission){
+
+            const row =
+                document.createElement("tr");
+
+            row.innerHTML = `
+
+                <td>${permission[0]}</td>
+
+                <td>
+
+                    ${permission[1] ? "Allowed" : "Not Allowed"}
+
+                </td>
+
+            `;
+
+            tableBody.appendChild(row);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
